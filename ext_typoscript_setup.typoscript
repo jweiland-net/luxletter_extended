@@ -6,7 +6,9 @@
 plugin.tx_luxletter_fe {
   view {
     templateRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Templates/
-    templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Templates/
+    ## Here we can set different Newsletter templates for different projects, f.e. Projekt1, Projekt2, domain1, domain2 etc.
+    #templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Templates/
+
     partialRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Partials/
     layoutRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Layouts/
   }
@@ -15,9 +17,44 @@ plugin.tx_luxletter_fe {
     # Settings are just value assignments. No cObject processing. Define them as simple Key-Value-pairs
     # pidOfDetailPage = 123
     # cssClassForDownloadLink = link-download
-    person {
-      firstName = Stefan
-      lastName = Froemken
+    newsletter {
+      maxWidth = {$newsletter.maxWidth}
+      maxWidth2 = {$newsletter.maxWidth2}
+      maxWInText = {$newsletter.maxWInText}it
+      maxWInText2 = {$newsletter.maxWInText2}
+      maxWidth2netto = {$newsletter.maxWidth2netto}
+      maxWInText2netto = {$newsletter.maxWInText2netto}
+      spacer = {$newsletter.spacer}
+      spacerx2 = {$newsletter.spacerx2}
+
+      fontFamily = {$newsletter.fontFamily}
+      fontSize = {$newsletter.fontSize}
+      lineHeight = {$newsletter.lineHeight}
+
+      fontSizeH1 = {$newsletter.fontSizeH1}
+      lineHeightH1 = {$newsletter.lineHeightH1}
+
+      fontSizeH2 = {$newsletter.fontSizeH2}
+      lineHeightH2 = {$newsletter.lineHeightH2}
+
+      fontSizeH3 = {$newsletter.fontSizeH3}
+      lineHeightH3 = {$newsletter.lineHeightH3}
+
+      fontSizeH4 = {$newsletter.fontSizeH4}
+      lineHeightH4 = {$newsletter.lineHeightH4}
+
+      txtColor1 = {$newsletter.txtColor1}
+      txtColor2 = {$newsletter.txtColor2}
+
+      headerColor = {$newsletter.headerColor}
+
+      hrefColor1 = {$newsletter.hrefColor1}
+      hrefColor2 = {$newsletter.hrefColor2}
+
+      bodyBg = {$newsletter.bodyBg}
+      contentBg = {$newsletter.contentBg}
+
+      logoFile = {$newsletter.logoFile}
     }
   }
 
@@ -28,9 +65,6 @@ plugin.tx_luxletter_fe {
     # cssClassForDownloadLink = TEXT
     # cssClassForDownloadLink.value = link-download
     # cssClassForDownloadLink.override.ifEmpty = my-own-download
-    pageTitle = TEXT
-    pageTitle.value = Seitentitel:
-    pageTitle.dataWrap = | {PAGE:title}
   }
 }
 

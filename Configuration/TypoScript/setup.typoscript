@@ -1,139 +1,11 @@
 # This is a special pageType of EXT:luxletter to render just the ContentElements. No Wrapping, no Teaser, nothing.
 # If you want to add settings/variables just for the ContentElements, this is a good place to do so.
-[getTSFE().type == 1562349004]
-  lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.style = margin:0 0 16px 0;
-
-  lib.contentElement {
-    templateRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Templates/
-    #templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Templates/
-    partialRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Partials/
-    #partialRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Partials/
-    layoutRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Layouts/
-    #layoutRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Layouts/
-
-    settings {
-      address {
-        street = Echterdinger Straße 57
-        city = Filderstadt
-      }
-
-      newsletter {
-        maxWidth = {$newsletter.maxWidth}
-        maxWidth2 = {$newsletter.maxWidth2}
-        maxWInText = {$newsletter.maxWInText}it
-        maxWInText2 = {$newsletter.maxWInText2}
-        maxWidth2netto = {$newsletter.maxWidth2netto}
-        maxWInText2netto = {$newsletter.maxWInText2netto}
-        spacer = {$newsletter.spacer}
-        spacerx2 = {$newsletter.spacerx2}
-
-        fontFamily = {$newsletter.fontFamily}
-        fontSize = {$newsletter.fontSize}
-        lineHeight = {$newsletter.lineHeight}
-
-        fontSizeH1 = {$newsletter.fontSizeH1}
-        lineHeightH1 = {$newsletter.lineHeightH1}
-
-        fontSizeH2 = {$newsletter.fontSizeH2}
-        lineHeightH2 = {$newsletter.lineHeightH2}
-
-        fontSizeH3 = {$newsletter.fontSizeH3}
-        lineHeightH3 = {$newsletter.lineHeightH3}
-
-        fontSizeH4 = {$newsletter.fontSizeH4}
-        lineHeightH4 = {$newsletter.lineHeightH4}
-
-        txtColor1 = {$newsletter.txtColor1}
-        txtColor2 = {$newsletter.txtColor2}
-
-        headerColor = {$newsletter.headerColor}
-
-        hrefColor1 = {$newsletter.hrefColor1}
-        hrefColor2 = {$newsletter.hrefColor2}
-
-        bodyBg = {$newsletter.bodyBg}
-        contentBg = {$newsletter.contentBg}
-
-        logoFile = {$newsletter.logoFile}
-      }
-    }
-
-    # We are in Content Context, so working with FIELD accesses record of tt_content
-    # Please use {PAGE:XY} to access record of page.
-    variables {
-      contentHeader = TEXT
-      contentHeader.value = Content Head:
-      contentHeader.dataWrap = |{PAGE:title}
-    }
-  }
-
-  ## Settings für news-Plugin
-  plugin.tx_news.settings.newsletter {
-    fontFamily = {$newsletter.fontFamily}
-    spacer = {$newsletter.spacer}
-    spacerx2 = {$newsletter.spacerx2}
-
-    fontFamily = {$newsletter.fontFamily}
-    fontSize = {$newsletter.fontSize}
-    lineHeight = {$newsletter.lineHeight}
-
-    fontSizeH1 = {$newsletter.fontSizeH1}
-    lineHeightH1 = {$newsletter.lineHeightH1}
-
-    fontSizeH2 = {$newsletter.fontSizeH2}
-    lineHeightH2 = {$newsletter.lineHeightH2}
-
-    fontSizeH3 = {$newsletter.fontSizeH3}
-    lineHeightH3 = {$newsletter.lineHeightH3}
-
-    fontSizeH4 = {$newsletter.fontSizeH4}
-    lineHeightH4 = {$newsletter.lineHeightH4}
-
-    txtColor1 = {$newsletter.txtColor1}
-    txtColor2 = {$newsletter.txtColor2}
-
-    headerColor = {$newsletter.headerColor}
-
-    hrefColor1 = {$newsletter.hrefColor1}
-    hrefColor2 = {$newsletter.hrefColor2}
-
-  }
-[end]
-
-# Using this does not make sense for iFrame PREVIEW in Backend as its
-# internal src is: http://luxletter-muster.ddev.site/?type=1560777975&tx_luxletter_fe[origin]=77
-#
-# As you may see, there is no page ID given in this link. So only settings/variables of ext_typoscript_setup.typoscript
-# will be used for PREVIEW rendering.
-#
-# You can force rendering this configuration, if you add
-# page-ID to link: http://luxletter-muster.ddev.site/?id=77&type=1560777975&tx_luxletter_fe[origin]=77
-/*
-plugin.tx_luxletter_fe {
-  # Try overriding paths of ext_typoscript_setup.typoscript (100)
-  view {
-    templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Templates/
-    partialRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Partials/
-    layoutRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Layouts/
-  }
-
-  settings {
-    # Settings "person" was declared in ext_typoscript_setup.typoscript.
-    # Try to add a further setting to NewsletterContainer
-    collegue {
-      firstName = Riona
-      lastName = Kuthe
-    }
-  }
-
-  variables {
-    # Variable "pageTitle" was declared in ext_typoscript_setup.typoscript.
-    # Try to add a further variable to NewsletterContainer
-    myName = TEXT
-    myName.dataWrap = Stefan Froemken (Seite: {PAGE:title})
-  }
+config {
+  spamProtectEmailAddresses = 0
 }
-*/
+[getTSFE().type == 1562349004]
+## Place for adjustments that should only be applied in the sent e-mail, but not in the preview, for example
+[end]
 
 ## Templates and Partials for EXT:news
 plugin.tx_news.view {
@@ -142,5 +14,159 @@ plugin.tx_news.view {
   layoutRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/General/News/Layouts/
 }
 
-## Bildbreite
+## Image width for EXT:newws list view
 plugin.tx_news.settings.list.media.image.maxWidth = 470
+
+lib.parseFunc_RTE.tags.a.typolink.forceAbsoluteUrl = 1
+lib.parseFunc_RTE.tags.a.typolink.ATagParams.data >
+lib.parseFunc_RTE.tags.a.typolink.ATagParams = style="color: {$newsletter.hrefColor1};text-decoration:none; font-weight: normal;"
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.style = word-break:break-word; font-family:{$newsletter.fontFamily};color:{$newsletter.txtColor1}; margin:0 0 {$newsletter.spacer} 0;font-size:{$newsletter.fontSize};line-height:{$newsletter.lineHeight};
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.H1.style = padding:0; margin:0 0 {$newsletter.spacer} 0; font-family: {$newsletter.fontFamily}; font-size:{$newsletter.fontSizeH1}; line-height:{$newsletter.lineHeightH1}; color:{$newsletter.txtColor1}; font-weight: normal;
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.H2.style = padding:0; margin:0 0 {$newsletter.spacer} 0; font-family: {$newsletter.fontFamily}; font-size:{$newsletter.fontSizeH2}; line-height:{$newsletter.lineHeightH2}; color:{$newsletter.txtColor1}; font-weight: normal;
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.H3.style = padding:0; margin:0 0 {$newsletter.spacer} 0; font-family: {$newsletter.fontFamily}; font-size:{$newsletter.fontSizeH3}; line-height:{$newsletter.lineHeightH3}; color:{$newsletter.txtColor1}; font-weight: normal;
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.H4.style = padding:0; margin:0 0 {$newsletter.spacer} 0; font-family: {$newsletter.fontFamily}; font-size:{$newsletter.fontSizeH4}; line-height:{$newsletter.lineHeightH4}; color:{$newsletter.txtColor1}; font-weight: normal;
+lib.parseFunc_RTE.externalBlocks {
+  ul {
+    stripNL = 1
+    stdWrap.HTMLparser = 1
+    stdWrap.HTMLparser.allowTags = a
+    stdWrap.HTMLparser {
+      tags.ul.overrideAttribs = style="margin: 0 0 {$newsletter.spacer} 0; font-family: {$newsletter.fontFamily}; color:{$newsletter.txtColor1}; font-size:{$newsletter.fontSize}; line-height:{$newsletter.lineHeight};"
+      tags.li.fixAttrib.style.list = margin: 0 0 {$newsletter.spacer} 0;color:{$newsletter.txtColor1}; font-size:{$newsletter.fontSize}; line-height:{$newsletter.lineHeight};
+      tags.li.fixAttrib.style.always = 1
+      tags.a.typolink.forceAbsoluteUrl = 1
+      tags.a.fixAttrib.style.list = color:{$newsletter.hrefColor1}
+      tags.a.fixAttrib.style.always = 1
+    }
+  }
+
+  ol < .ul
+  ol.stdWrap.HTMLparser.tags.ol.overrideAttribs = style="margin: 0 0 {$newsletter.spacer} 0; font-family: {$newsletter.fontFamily}; color:{$newsletter.txtColor1}; font-size:{$newsletter.fontSize}; line-height:{$newsletter.lineHeight};"
+}
+
+lib.contentElement {
+
+  templateRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Templates/
+  #templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Templates/
+  partialRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Partials/
+  #partialRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Partials/
+  layoutRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Layouts/
+
+  settings {
+    newsletter {
+      maxWidth = {$newsletter.maxWidth}
+      maxWidth2 = {$newsletter.maxWidth2}
+      maxWInText = {$newsletter.maxWInText}it
+      maxWInText2 = {$newsletter.maxWInText2}
+      maxWidth2netto = {$newsletter.maxWidth2netto}
+      maxWInText2netto = {$newsletter.maxWInText2netto}
+      spacer = {$newsletter.spacer}
+      spacerx2 = {$newsletter.spacerx2}
+
+      fontFamily = {$newsletter.fontFamily}
+      fontSize = {$newsletter.fontSize}
+      lineHeight = {$newsletter.lineHeight}
+
+      fontSizeH1 = {$newsletter.fontSizeH1}
+      lineHeightH1 = {$newsletter.lineHeightH1}
+
+      fontSizeH2 = {$newsletter.fontSizeH2}
+      lineHeightH2 = {$newsletter.lineHeightH2}
+
+      fontSizeH3 = {$newsletter.fontSizeH3}
+      lineHeightH3 = {$newsletter.lineHeightH3}
+
+      fontSizeH4 = {$newsletter.fontSizeH4}
+      lineHeightH4 = {$newsletter.lineHeightH4}
+
+      txtColor1 = {$newsletter.txtColor1}
+      txtColor2 = {$newsletter.txtColor2}
+
+      headerColor = {$newsletter.headerColor}
+
+      hrefColor1 = {$newsletter.hrefColor1}
+      hrefColor2 = {$newsletter.hrefColor2}
+
+      bodyBg = {$newsletter.bodyBg}
+      contentBg = {$newsletter.contentBg}
+
+      logoFile = {$newsletter.logoFile}
+    }
+  }
+
+}
+
+plugin.tx_news.settings.newsletter {
+  fontFamily = {$newsletter.fontFamily}
+  spacer = {$newsletter.spacer}
+  spacerx2 = {$newsletter.spacerx2}
+
+  fontFamily = {$newsletter.fontFamily}
+  fontSize = {$newsletter.fontSize}
+  lineHeight = {$newsletter.lineHeight}
+
+  fontSizeH1 = {$newsletter.fontSizeH1}
+  lineHeightH1 = {$newsletter.lineHeightH1}
+
+  fontSizeH2 = {$newsletter.fontSizeH2}
+  lineHeightH2 = {$newsletter.lineHeightH2}
+
+  fontSizeH3 = {$newsletter.fontSizeH3}
+  lineHeightH3 = {$newsletter.lineHeightH3}
+
+  fontSizeH4 = {$newsletter.fontSizeH4}
+  lineHeightH4 = {$newsletter.lineHeightH4}
+
+  txtColor1 = {$newsletter.txtColor1}
+  txtColor2 = {$newsletter.txtColor2}
+
+  headerColor = {$newsletter.headerColor}
+
+  hrefColor1 = {$newsletter.hrefColor1}
+  hrefColor2 = {$newsletter.hrefColor2}
+
+}
+
+
+## PAGE-Objekt für Backend Preview
+config.disableAllHeaderCode = 1
+page.1518545003 >
+page {
+  includeCSS >
+  includeJS >
+  includeJSFooter >
+  includeJSFooterlibs >
+  includeJSLibs >
+}
+
+## Content for the footer of the newsletter
+lib.footerContent = CONTENT
+lib.footerContent {
+  table = tt_content
+  select.pidInList = {$newsletter.footerContentPid}
+  select.orderBy = sorting
+  select.languageField = sys_language_uid
+}
+
+page.10 {
+  file >
+  file = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Templates/Mail/NewsletterContainer.html
+  partialRootPaths {
+    190 = EXT:luxletter/Resources/Private/Partials/
+    200 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Partials/
+  }
+
+  variables {
+    content < styles.content.get
+  }
+
+  settings {
+    newsletter < lib.contentElement.settings.newsletter
+  }
+}
+
+# https://docs.typo3.org/m/typo3/reference-typoscript/master/en-us/Functions/Typolink.html
+config.recordLinks.tx_news.typolink.forceAbsoluteUrl = 1
+lib.parseFunc.tags.a.typolink.forceAbsoluteUrl = 1
+lib.parseFunc_RTE.tags.a.typolink.forceAbsoluteUrl = 1
+lib.parseFunc_RTE.externalBlocks.pre.stdWrap.parseFunc.tags.a.typolink.forceAbsoluteUrl = 1

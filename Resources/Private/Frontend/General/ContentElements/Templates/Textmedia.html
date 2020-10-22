@@ -191,5 +191,5 @@
 
 
 <f:section name="Image">
-	<f:media class="center-on-narrow" style="width: 100%; max-width: {f:if(condition: '{data.imageorient} > 10', then: '220px', else: '680px')}; height: auto; background: #dddddd; font-family: {settings.newsletter.fontFamily}; font-size: {settings.newsletter.fontSize}; line-height: 15px; color: #555555;margin-bottom:{settings.newsletter.spacerx2}" file="{file}" width="{f:if(condition: '{data.imageorient} > 10', then: '220px', else: '680px')}"  alt="{file.alternative}" title="{file.title}" />
+	<f:media class="center-on-narrow" style="width: 100%; max-width: {f:if(condition: '{data.imageorient} > 10', then: '220px', else: '680px')}; height: auto; background: #dddddd; font-family: {settings.newsletter.fontFamily}; font-size: {settings.newsletter.fontSize}; line-height: 15px; color: #555555;margin-bottom:{settings.newsletter.spacerx2}" file="{file}" width="{f:if(condition: '{data.imageorient} > 10', then: '220px', else: '680px')}" cropVariant="desktop" alt="{file.alternative}" title="{file.title}" />
 </f:section>

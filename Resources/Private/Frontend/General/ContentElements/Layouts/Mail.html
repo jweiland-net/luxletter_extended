@@ -1,4 +1,6 @@
-<table id="c{data.uid}" style="width:100%;{f:if(condition: '{data.frame_class} != \'custom-40\'', then: ' border-top: 1px solid {settings.newsletter.headerColor}')}">
+
+
+<table id="c{data.uid}" style="margin-bottom: {settings.newsletter.spacerx2} !important; width:100%;{f:if(condition: '{data.frame_class} != \'transparent\' && {data.frame_class} != \'default\'', then: ' border-top: 4px solid #{data.frame_class}')}">
 	<f:render section="Content" />
 </table>
 <!-- <p>&nbsp;</p> -->

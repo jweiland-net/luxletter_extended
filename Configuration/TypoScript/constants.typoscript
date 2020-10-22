@@ -35,15 +35,16 @@ newsletter.boxColor = #F6F5F4
 newsletter.txtColor1 = #222222
 newsletter.txtColor2 = #ffffff
 
-newsletter.headerColor = #0073a0
+#newsletter.headerColor = #0073a0
+newsletter.headerColor = #222
 
 newsletter.fontSize = 16px
-newsletter.lineHeight = 20px
+newsletter.lineHeight = 22px
 
-newsletter.fontSizeH1 = 24px
+newsletter.fontSizeH1 = 28px
 newsletter.lineHeightH1 = 24px
 
-newsletter.fontSizeH2 = 20px
+newsletter.fontSizeH2 = 24px
 newsletter.lineHeightH2 = 24px
 
 newsletter.fontSizeH3 = 18px
@@ -54,3 +55,5 @@ newsletter.lineHeightH4 = 20px
 
 newsletter.hrefColor1 = #0073a0
 newsletter.hrefColor2 = pink
+
+newsletter.footerContentPid = 76

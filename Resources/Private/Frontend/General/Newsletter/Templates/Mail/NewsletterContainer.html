@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="de" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <f:comment>
 	<!--
@@ -12,62 +12,92 @@
 </f:comment>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>Newsletter</title>
-
-	<f:comment><!-- SF/JW: ToDo: Maybe we should move following lines into <body>. IMO Google removes everything outsite of <body> --></f:comment>
-
+	<meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+	<meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+	<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+	<!-- Tell iOS not to automatically link certain text strings. -->
+	<meta name="color-scheme" content="light">
+	<meta name="supported-color-schemes" content="light">
+	<title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
 	<f:render partial="Mail/Css/Reset" />
 	<f:render partial="Mail/Css/Style" />
-
-	<f:comment><!-- SF/JW: You can override CSS from above, but I prefer to remove following lines completely --></f:comment>
-	<style type="text/css">
-    body {
-      border: 5px solid #DD0000;
-    }
-	</style>
 </head>
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color:#ffffff;">
 
-<body>
+<center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color:ffffff;">
+	<!--[if mso | IE]>
+	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #ffffff;">
+		<tr>
+			<td>
+	<![endif]-->
 
-<table>
-	<thead>
-	<tr>
-		<td align="center" valign="top">
-			<h4 class="text-center">Template</h4>
-			<p class="text-center">Frontend/General/Newsletter/Templates/Mail/newsletterContainer.html</p>
-			<hr>
+	<!-- Visually Hidden Preheader Text : BEGIN -->
+	<div style="max-height:0; overflow:hidden; mso-hide:all;" aria-hidden="true">
+
+	</div>
+	<!-- Visually Hidden Preheader Text : END -->
+
+	<!-- Preview Text Spacing Hack : BEGIN -->
+	<div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: {fontFamily};">
+		&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+	</div>
+	<!-- Preview Text Spacing Hack : END -->
+
+	<div style="max-width: 680px; margin: 0 auto;" class=" email-container">
+		<!--[if mso]>
+		<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="680">
+			<tr>
+				<td>
+		<![endif]-->
+		<!-- Email Body : BEGIN -->
+		<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; background-color: #ffffff;">
+			<tr>
+				<td width="100%" style="text-align: left; border-bottom: 5px solid {settings.newsletter.borderColor1};">
+					<img src="{luxletter:configuration.getDomain()}/fileadmin/Examples/jweiland_logo.png" width="215" style="max-width:100%; height: auto;" alt="Logo Projekt 1"/>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr><td>
+				<f:format.raw>{content}</f:format.raw>
+			</td></tr>
+		</table>
+		<!-- Email Body : END -->
+
+		<!-- Email Footer : BEGIN -->
+		<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 680px;width:100%; border-top: 1px solid #0073a0;">
+			<tr>
+				<td style="padding:{settings.newsletter.spacerx2} 0; font-family: {settings.newsletter.fontFamily}; font-size: 12px; line-height: 18px; text-align: left; color: {settings.newsletter.txtColor1};">
+					<f:cObject typoscriptObjectPath="lib.footerContent" />
+
+					<p style="padding: 0 10px; color: {settings.newsletter.txtColor1}; text-decoration: none;">
+						Dieser Text stammt aus dem Template, da hier auch eine Variable ausgegeben wird.<br>
+						Dieser Newsletter wurde an die E-Mailadresse {user.email} verschickt.<br>
+						<f:link.external uri="{luxletter:mail.getUnsubscribeUrl(newsletter:newsletter,user:user)}" additionalAttributes="{data-luxletter-parselink:'false'}" style="color: {settings.newsletter.hrefColor1}; text-decoration: none;">Click here to unsubscribe</f:link.external>
+					</p>
+					<br><br><br>
+				</td>
+			</tr>
+		</table>
+		<!-- Email Footer : END -->
+
+		<!--[if mso]>
 		</td>
-	</tr>
-	</thead>
+		</tr>
+		</table>
+		<![endif]-->
+	</div>
 
-	<tbody>
-	<tr>
-		<td align="center" valign="top">
-			<f:format.raw>{content}</f:format.raw>
-
-			<table>
-				<tr>
-					<td>
-						<a href="https://www.instagram.com/in2code.de/"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconInstagram.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
-					</td>
-					<td class="menu-item float-center">
-						<a href="https://www.facebook.com/in2code.de/"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconFacebook.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
-					</td>
-					<td class="menu-item float-center">
-						<a href="https://twitter.com/in2code_de"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconTwitter.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
-					</td>
-					<td class="menu-item float-center">
-						<a href="https://www.youtube.com/user/in2code"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconYoutube.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
-					</td>
-				</tr>
-			</table>
-		</td>
+	<!--[if mso | IE]>
+	</td>
 	</tr>
-	</tbody>
-</table>
+	</table>
+	<![endif]-->
+</center>
 
 <f:render partial="Mail/TrackingPixel" arguments="{_all}"/>
+
 </body>
+
 </html>

@@ -1,8 +1,17 @@
 
 #################### frame_class options #################
+TCAdefaults.tt_content.frame_class = 0073a0
 TCEFORM.tt_content.frame_class {
+  removeItems = 0
+
   addItems {
-    custom-40 = No top border
+    ## The keys are the hexadecimal color codes which can be used for example in EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Layouts/Mail.html
+    ## to give all content elements a top border (or what ever we want)
+    transparent = No top border
+    87c8dc = Top border cyan
+    c80a00 = Top border red
+    d7c800 = Top border yellow
+    0073a0 = Top border default
   }
 }
 
@@ -25,7 +34,7 @@ TCEFORM.tt_content {
   tx_jwmusterprojekt10_imagesizes.disabled = 1
   imagecols.disabled = 1
   image_zoom.disabled = 1
-  layout.disabled = 1
+  #layout.disabled = 1
   space_before_class.disabled = 1
   space_after_class.disabled = 1
   sectionIndex.disabled = 1
@@ -39,15 +48,17 @@ TCEFORM.tt_content.imageorient.removeItems = 0,1,8,9,17,18
 ## Remove unwanted frame classes
 TCEFORM.tt_content.frame_class.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,custom-30,custom-31
 
-## Default header for new CE
 mod.wizards.newContentElement.wizardItems.common.elements {
   textmedia.tt_content_defValues {
     imageorient = 26
     imagecols = 1
-    ##default header for new content elements
+    ## default header for new content elements
     header_layout = 2
   }
 }
 
 ## Do not show newsletter pages in any menus
 TCAdefaults.pages.nav_hide = 1
+
+## We can use a custom CKEditor config only for the newsletter area
+RTE.default.preset = newsletter
