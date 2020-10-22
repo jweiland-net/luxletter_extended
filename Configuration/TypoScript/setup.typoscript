@@ -1,0 +1,146 @@
+# This is a special pageType of EXT:luxletter to render just the ContentElements. No Wrapping, no Teaser, nothing.
+# If you want to add settings/variables just for the ContentElements, this is a good place to do so.
+[getTSFE().type == 1562349004]
+  lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.style = margin:0 0 16px 0;
+
+  lib.contentElement {
+    templateRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Templates/
+    #templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Templates/
+    partialRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Partials/
+    #partialRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Partials/
+    layoutRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/ContentElements/Layouts/
+    #layoutRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/ContentElements/Layouts/
+
+    settings {
+      address {
+        street = Echterdinger Straße 57
+        city = Filderstadt
+      }
+
+      newsletter {
+        maxWidth = {$newsletter.maxWidth}
+        maxWidth2 = {$newsletter.maxWidth2}
+        maxWInText = {$newsletter.maxWInText}it
+        maxWInText2 = {$newsletter.maxWInText2}
+        maxWidth2netto = {$newsletter.maxWidth2netto}
+        maxWInText2netto = {$newsletter.maxWInText2netto}
+        spacer = {$newsletter.spacer}
+        spacerx2 = {$newsletter.spacerx2}
+
+        fontFamily = {$newsletter.fontFamily}
+        fontSize = {$newsletter.fontSize}
+        lineHeight = {$newsletter.lineHeight}
+
+        fontSizeH1 = {$newsletter.fontSizeH1}
+        lineHeightH1 = {$newsletter.lineHeightH1}
+
+        fontSizeH2 = {$newsletter.fontSizeH2}
+        lineHeightH2 = {$newsletter.lineHeightH2}
+
+        fontSizeH3 = {$newsletter.fontSizeH3}
+        lineHeightH3 = {$newsletter.lineHeightH3}
+
+        fontSizeH4 = {$newsletter.fontSizeH4}
+        lineHeightH4 = {$newsletter.lineHeightH4}
+
+        txtColor1 = {$newsletter.txtColor1}
+        txtColor2 = {$newsletter.txtColor2}
+
+        headerColor = {$newsletter.headerColor}
+
+        hrefColor1 = {$newsletter.hrefColor1}
+        hrefColor2 = {$newsletter.hrefColor2}
+
+        bodyBg = {$newsletter.bodyBg}
+        contentBg = {$newsletter.contentBg}
+
+        logoFile = {$newsletter.logoFile}
+      }
+    }
+
+    # We are in Content Context, so working with FIELD accesses record of tt_content
+    # Please use {PAGE:XY} to access record of page.
+    variables {
+      contentHeader = TEXT
+      contentHeader.value = Content Head:
+      contentHeader.dataWrap = |{PAGE:title}
+    }
+  }
+
+  ## Settings für news-Plugin
+  plugin.tx_news.settings.newsletter {
+    fontFamily = {$newsletter.fontFamily}
+    spacer = {$newsletter.spacer}
+    spacerx2 = {$newsletter.spacerx2}
+
+    fontFamily = {$newsletter.fontFamily}
+    fontSize = {$newsletter.fontSize}
+    lineHeight = {$newsletter.lineHeight}
+
+    fontSizeH1 = {$newsletter.fontSizeH1}
+    lineHeightH1 = {$newsletter.lineHeightH1}
+
+    fontSizeH2 = {$newsletter.fontSizeH2}
+    lineHeightH2 = {$newsletter.lineHeightH2}
+
+    fontSizeH3 = {$newsletter.fontSizeH3}
+    lineHeightH3 = {$newsletter.lineHeightH3}
+
+    fontSizeH4 = {$newsletter.fontSizeH4}
+    lineHeightH4 = {$newsletter.lineHeightH4}
+
+    txtColor1 = {$newsletter.txtColor1}
+    txtColor2 = {$newsletter.txtColor2}
+
+    headerColor = {$newsletter.headerColor}
+
+    hrefColor1 = {$newsletter.hrefColor1}
+    hrefColor2 = {$newsletter.hrefColor2}
+
+  }
+[end]
+
+# Using this does not make sense for iFrame PREVIEW in Backend as its
+# internal src is: http://luxletter-muster.ddev.site/?type=1560777975&tx_luxletter_fe[origin]=77
+#
+# As you may see, there is no page ID given in this link. So only settings/variables of ext_typoscript_setup.typoscript
+# will be used for PREVIEW rendering.
+#
+# You can force rendering this configuration, if you add
+# page-ID to link: http://luxletter-muster.ddev.site/?id=77&type=1560777975&tx_luxletter_fe[origin]=77
+/*
+plugin.tx_luxletter_fe {
+  # Try overriding paths of ext_typoscript_setup.typoscript (100)
+  view {
+    templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Templates/
+    partialRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Partials/
+    layoutRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Layouts/
+  }
+
+  settings {
+    # Settings "person" was declared in ext_typoscript_setup.typoscript.
+    # Try to add a further setting to NewsletterContainer
+    collegue {
+      firstName = Riona
+      lastName = Kuthe
+    }
+  }
+
+  variables {
+    # Variable "pageTitle" was declared in ext_typoscript_setup.typoscript.
+    # Try to add a further variable to NewsletterContainer
+    myName = TEXT
+    myName.dataWrap = Stefan Froemken (Seite: {PAGE:title})
+  }
+}
+*/
+
+## Templates and Partials for EXT:news
+plugin.tx_news.view {
+  templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/General/News/Templates/
+  partialRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/General/News/Partials/
+  layoutRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/General/News/Layouts/
+}
+
+## Bildbreite
+plugin.tx_news.settings.list.media.image.maxWidth = 470

@@ -1,0 +1,26 @@
+{
+	"name": "jweiland/luxletter",
+	"description": "Override luxletter as long as our PRs are not implemented",
+	"keywords": [
+		"typo3",
+		"newsletter",
+		"extended"
+	],
+	"homepage": "https://jweiland.net",
+	"authors": [
+		{
+			"name": "Stefan Froemken",
+			"email": "projects@jweiland.net"
+		}
+	],
+	"type": "typo3-cms-extension",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"in2code/luxletter": "^2.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"JWeiland\\LuxletterExtended\\": "Classes/"
+		}
+	}
+}

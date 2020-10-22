@@ -1,0 +1,53 @@
+
+#################### frame_class options #################
+TCEFORM.tt_content.frame_class {
+  addItems {
+    custom-40 = No top border
+  }
+}
+
+## Remove unwanted content elements
+TCEFORM.tt_content.CType.keepItems = textmedia,list
+mod.wizards.newContentElement.wizardItems.plugins.show = news
+mod.wizards.newContentElement.wizardItems.forms.show >
+
+## Disable unneeded fields in content element
+TCEFORM.tt_content {
+  #CType.disabled = 1
+  colPos.disabled = 1
+  tx_container_parent.disabled = 1
+  header_position.disabled = 1
+  date.disabled = 1
+  header_link.disabled = 1
+  subheader.disabled = 1
+  tx_yoastseo_linking_suggestions.disabled = 1
+  imageborder.disabled = 1
+  tx_jwmusterprojekt10_imagesizes.disabled = 1
+  imagecols.disabled = 1
+  image_zoom.disabled = 1
+  layout.disabled = 1
+  space_before_class.disabled = 1
+  space_after_class.disabled = 1
+  sectionIndex.disabled = 1
+  linkToTop.disabled = 1
+  sys_language_uid.disabled = 1
+}
+
+## Remove unwanted image orient options
+TCEFORM.tt_content.imageorient.removeItems = 0,1,8,9,17,18
+
+## Remove unwanted frame classes
+TCEFORM.tt_content.frame_class.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,custom-30,custom-31
+
+## Default header for new CE
+mod.wizards.newContentElement.wizardItems.common.elements {
+  textmedia.tt_content_defValues {
+    imageorient = 26
+    imagecols = 1
+    ##default header for new content elements
+    header_layout = 2
+  }
+}
+
+## Do not show newsletter pages in any menus
+TCAdefaults.pages.nav_hide = 1

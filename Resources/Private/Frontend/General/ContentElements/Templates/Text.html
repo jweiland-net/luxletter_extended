@@ -1,0 +1,33 @@
+<f:layout name="Mail" />
+
+
+
+<f:section name="Content">
+	<f:comment>
+		Header
+	</f:comment>
+	<f:if condition="{data.header}">
+		<tr>
+			<td style="padding: 20px 0;" valign="top">
+				<f:render partial="Header" arguments="{_all}" />
+			</td>
+		</tr>
+	</f:if>
+
+	<f:comment>
+		Text
+	</f:comment>
+	<f:if condition="{data.bodytext}">
+		<tr>
+			<td style="background-color: #ffffff;" valign="top">
+				<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+					<tr>
+						<td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+							<f:render partial="Bodytext" arguments="{_all}"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</f:if>
+</f:section>

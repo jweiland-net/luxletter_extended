@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml">
+
+<f:comment>
+	<!--
+	You can use following Variables:
+	- {content} = Parsed page-content
+	- {user} = The individual user-object (Type: In2code\Luxletter\Domain\Model\User). If fe_user table was extended, this user-objectalso has to be extended (EXT:extender).
+	- {settings.XY} = Settings defined by plugin.tx_luxletter_fe.settings.XY
+	- {XY} = Individual defined variables (mostly used as cObj) by TypoScript plugin.tx_luxletter_fe.variables.XY = cObject
+	-->
+</f:comment>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Newsletter</title>
+
+	<f:comment><!-- SF/JW: ToDo: Maybe we should move following lines into <body>. IMO Google removes everything outsite of <body> --></f:comment>
+
+	<f:render partial="Mail/Css/Reset" />
+	<f:render partial="Mail/Css/Style" />
+
+	<f:comment><!-- SF/JW: You can override CSS from above, but I prefer to remove following lines completely --></f:comment>
+	<style type="text/css">
+    body {
+      border: 5px solid #DD0000;
+    }
+	</style>
+</head>
+
+<body>
+
+<table>
+	<thead>
+	<tr>
+		<td align="center" valign="top">
+			<h4 class="text-center">Template</h4>
+			<p class="text-center">Frontend/General/Newsletter/Templates/Mail/newsletterContainer.html</p>
+			<hr>
+		</td>
+	</tr>
+	</thead>
+
+	<tbody>
+	<tr>
+		<td align="center" valign="top">
+			<f:format.raw>{content}</f:format.raw>
+
+			<table>
+				<tr>
+					<td>
+						<a href="https://www.instagram.com/in2code.de/"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconInstagram.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
+					</td>
+					<td class="menu-item float-center">
+						<a href="https://www.facebook.com/in2code.de/"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconFacebook.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
+					</td>
+					<td class="menu-item float-center">
+						<a href="https://twitter.com/in2code_de"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconTwitter.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
+					</td>
+					<td class="menu-item float-center">
+						<a href="https://www.youtube.com/user/in2code"><img src="{luxletter:configuration.getDomain()}/{f:uri.resource(path:'Images/IconYoutube.png',extensionName:'luxletter')}" alt="" width="24" class="small small50"></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<f:render partial="Mail/TrackingPixel" arguments="{_all}"/>
+</body>
+</html>

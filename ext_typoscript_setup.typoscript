@@ -1,0 +1,57 @@
+# SF/JW: As luxletter adds a global available TS configuration with its ext_typoscript_setup.txt
+# we only can override it the same way with our own ext_typoscript_setup.txt.
+# Please be sure to load luxletter before this extension in ext_emconf.php and maybe composer
+
+# Override Template for Mail rendering in Frontend. Used in EXT:luxletter module (wizard) in iFrame (PREVIEW)
+plugin.tx_luxletter_fe {
+  view {
+    templateRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Templates/
+    templateRootPaths.101 = EXT:luxletter_extended/Resources/Private/Frontend/Projekt1/Newsletter/Templates/
+    partialRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Partials/
+    layoutRootPaths.100 = EXT:luxletter_extended/Resources/Private/Frontend/General/Newsletter/Layouts/
+  }
+
+  settings {
+    # Settings are just value assignments. No cObject processing. Define them as simple Key-Value-pairs
+    # pidOfDetailPage = 123
+    # cssClassForDownloadLink = link-download
+    person {
+      firstName = Stefan
+      lastName = Froemken
+    }
+  }
+
+  variables {
+    # Variables are more complex than settings and allows you to assign them cObjects
+    # pidOfDetailPage = TEXT
+    # pidOfDetailPage.data = PAGE:uid
+    # cssClassForDownloadLink = TEXT
+    # cssClassForDownloadLink.value = link-download
+    # cssClassForDownloadLink.override.ifEmpty = my-own-download
+    pageTitle = TEXT
+    pageTitle.value = Seitentitel:
+    pageTitle.dataWrap = | {PAGE:title}
+  }
+}
+
+# Use the same templates, which are used for PREVIEW rendering (FE), for sending mails (BE:scheduler/testmail).
+module.tx_luxletter < plugin.tx_luxletter_fe
+
+# Override Template for Backend Newsletter Wizard containing analysis data and sent newsletter list
+module.tx_luxletter_lux_luxletterluxletter {
+  view {
+    templateRootPaths.100 = EXT:luxletter_extended/Resources/Private/Backend/Templates/
+    partialRootPaths.100 = EXT:luxletter_extended/Resources/Private/Backend/Partials/
+    layoutRootPaths.100 = EXT:luxletter_extended/Resources/Private/Backend/Layouts/
+  }
+}
+
+# This will be inserted by 02_PageSettings.typoscript of EXT:luxletter.
+#
+# It represents the iFrame Preview in Luxletter Newsletter Wizard in TYPO3-Backend.
+# The iFrame src looks like: http://luxletter-muster.ddev.site/?type=1560777975&tx_luxletter_fe[origin]=77
+# As the page ID is missing in this link TS:data can only access data of RootPage.
+# Using this src: http://luxletter-muster.ddev.site/?id=77&type=1560777975&tx_luxletter_fe[origin]=77
+# will fill TS:data with the correct values.
+#luxletterPreviewNewsletter = PAGE
+#luxletterPreviewNewsletter.typeNum = 1560777975

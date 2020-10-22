@@ -1,0 +1,56 @@
+styles.content.textmedia.maxW = 660
+styles.content.textmedia.maxWInText = 310
+
+styles.content.imgtext.maxW = 5
+
+
+newsletter.footerContent = 2200
+
+newsletter.maxWidth = 680
+newsletter.maxWInText = 310
+
+newsletter.maxWidth2 = 330
+
+newsletter.maxWidth2netto = 310
+
+newsletter.maxWInText2 = 330
+newsletter.maxWInText2netto = 310
+
+newsletter.spacer = 10px
+newsletter.spacerx2 = 20px
+
+newsletter.footerInfoUid = 2200
+newsletter.fontFamily = verdana,arial,helvetica,sans-serif
+
+newsletter.bodyBg = #333333
+newsletter.headerBg = #ffffff
+newsletter.contentBg = #ffffff
+
+
+newsletter.headerBorderColor = #205b9f
+newsletter.borderColor1 = #B7AF9C
+newsletter.rulerStyle = border-bottom: 1px solid #B7AF9C;
+
+newsletter.boxColor = #F6F5F4
+newsletter.txtColor1 = #222222
+newsletter.txtColor2 = #ffffff
+
+newsletter.headerColor = #0073a0
+
+newsletter.fontSize = 16px
+newsletter.lineHeight = 20px
+
+newsletter.fontSizeH1 = 24px
+newsletter.lineHeightH1 = 24px
+
+newsletter.fontSizeH2 = 20px
+newsletter.lineHeightH2 = 24px
+
+newsletter.fontSizeH3 = 18px
+newsletter.lineHeightH3 = 20px
+
+newsletter.fontSizeH4 = 16px
+newsletter.lineHeightH4 = 20px
+
+newsletter.hrefColor1 = #0073a0
+newsletter.hrefColor2 = pink

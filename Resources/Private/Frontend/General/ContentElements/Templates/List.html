@@ -1,0 +1,14 @@
+<f:layout name="Mail" />
+<f:section name="Content">
+	<f:comment>
+		Header
+	</f:comment>
+	<f:if condition="{data.header}">
+		<tr>
+			<td class="float-center" valign="top" style="background-color: {settings.newsletter.contentBg}; padding: {settings.newsletter.spacer};">
+				<f:render partial="Header" arguments="{_all}" />
+			</td>
+		</tr>
+	</f:if>
+	<f:cObject typoscriptObjectPath="tt_content.list.20.{data.list_type}" data="{data}" table="tt_content"/>
+</f:section>

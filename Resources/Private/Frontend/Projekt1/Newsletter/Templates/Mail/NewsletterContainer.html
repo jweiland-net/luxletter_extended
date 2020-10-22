@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<f:comment>
+	<!--
+	You can use following Variables:
+	- {content} = Parsed page-content
+	- {user} = The individual user-object (Type: In2code\Luxletter\Domain\Model\User). If fe_user table was extended, this user-objectalso has to be extended (EXT:extender).
+	- {settings.XY} = Settings defined by plugin.tx_luxletter_fe.settings.XY
+	- {XY} = Individual defined variables (mostly used as cObj) by TypoScript plugin.tx_luxletter_fe.variables.XY = cObject
+	-->
+</f:comment>
+
+<head>
+	<meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+	<meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+	<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+	<!-- Tell iOS not to automatically link certain text strings. -->
+	<meta name="color-scheme" content="light">
+	<meta name="supported-color-schemes" content="light">
+	<title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+	<f:render partial="Mail/Css/Reset" />
+	<f:render partial="Mail/Css/Style" />
+</head>
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color:#ffffff;">
+
+<center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color:ffffff;">
+	<!--[if mso | IE]>
+	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #ffffff;">
+		<tr>
+			<td>
+	<![endif]-->
+
+	<!-- Visually Hidden Preheader Text : BEGIN -->
+	<div style="max-height:0; overflow:hidden; mso-hide:all;" aria-hidden="true">
+
+	</div>
+	<!-- Visually Hidden Preheader Text : END -->
+
+	<!-- Preview Text Spacing Hack : BEGIN -->
+	<div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: {fontFamily};">
+		&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+	</div>
+	<!-- Preview Text Spacing Hack : END -->
+
+	<div style="max-width: 680px; margin: 0 auto;" class=" email-container">
+		<!--[if mso]>
+		<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="680">
+			<tr>
+				<td>
+		<![endif]-->
+		<!-- Email Body : BEGIN -->
+		<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; background-color: #ffffff;">
+			<tr>
+				<td width="100%" style="text-align: left; border-bottom: 5px solid #0073a0;">
+					<img src="{luxletter:configuration.getDomain()}{f:uri.resource(path:'Images/gh_logo_w300.png',extensionName:'jwmusterprojekt10')}" width="300" style="max-width:100%; height: auto;" alt="German Alliance for Global Health Research"/>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<f:format.raw>{content}</f:format.raw>
+		</table>
+		<!-- Email Body : END -->
+
+		<!-- Email Footer : BEGIN -->
+		<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 680px;width:100%; border-top: 1px solid #0073a0;">
+			<tr>
+				<td style="padding:30px 10px; font-family: verdana,arial,helvetica,sans-serif; font-size: 12px; line-height: 18px; text-align: left; color: #222222;">
+					Please go to our website and follow us on Twitter to stay up to date on all of our actvites!<br><br>
+					This Newsletter is distributed monthly. If you would like to submit an artcle or a news item to be included in the next newsletter, please contact the secretariat.<br><br>
+					This email was sent to {user.email}. You received this e-mail because you are registered as a member or associate member of the German Alliance for Global Health Research.
+					<br><br>
+					<unsubscribe style="xcolor: {hrefColor2}; text-decoration: none;">
+						<f:link.external uri="{luxletter:mail.getUnsubscribeUrl(newsletter:newsletter,user:user)}" additionalAttributes="{data-luxletter-parselink:'false'}" style="color: {hrefColor2}; text-decoration: none;">Click here to unsubscribe</f:link.external>
+					</unsubscribe>
+					<br><br><br>
+					German Alliance for Global Health Research<br>
+					Secretariat c/o Charité – Universitätsmedizin Berlin<br>
+					Charitéplatz 1<br>
+					10117 Berlin, Germany<br>
+					e: secretariat@globalhealth.de<br>
+					t: +49 30 450 572 100<br>
+					f: +49 30 450 7572 118<br>
+				</td>
+			</tr>
+		</table>
+		<!-- Email Footer : END -->
+
+		<!--[if mso]>
+		</td>
+		</tr>
+		</table>
+		<![endif]-->
+	</div>
+
+	<!--[if mso | IE]>
+	</td>
+	</tr>
+	</table>
+	<![endif]-->
+</center>
+
+<f:render partial="Mail/TrackingPixel" arguments="{_all}"/>
+
+</body>
+
+</html>
