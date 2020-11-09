@@ -12,7 +12,15 @@ call_user_func(function () {
         \TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
     );
 
-    // SF/JW: Use page-related TSFE (Configuration/TypoScript/*.typoscript)
+    // SF/JW: Initialize Extbase BackendConfiguration with correct page instead of using the first found site.
+    $signalSlotDispatcher->connect(
+        \In2code\Luxletter\Domain\Service\ParseNewsletterUrlService::class,
+        'constructor',
+        \JWeiland\LuxletterExtended\SignalSlot\BeforeParsingSignalSlot::class,
+        'constructor'
+    );
+    // SF/JW: Initialize TSFE in BE with page related TS (Configuration/TypoScript/*.typoscript)
+    // instead of using ext_typoscript_setup.txt only.
     $signalSlotDispatcher->connect(
         \JWeiland\LuxletterExtended\Domain\Service\ParseNewsletterUrlService::class,
         'getNewsletterContainerAndContentBeforeParsing',

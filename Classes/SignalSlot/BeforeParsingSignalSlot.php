@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\LuxletterExtended\SignalSlot;
 
 use In2code\Luxletter\Domain\Model\User;
-use JWeiland\LuxletterExtended\Domain\Service\ParseNewsletterUrlService;
+use In2code\Luxletter\Domain\Service\ParseNewsletterUrlService;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\UserAspect;
@@ -29,6 +29,7 @@ use TYPO3\CMS\Core\Type\Bitmask\Permission;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Frontend\Aspect\PreviewAspect;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -58,6 +59,16 @@ class BeforeParsingSignalSlot implements SingletonInterface
     {
         $this->context = $context;
         $this->matcher = $matcher;
+    }
+
+    public function constructor(
+        string $url,
+        string $origin,
+        ParseNewsletterUrlService $parseNewsletterUrlService
+    ): void {
+        if (MathUtility::canBeInterpretedAsInteger($origin)) {
+            $_GET['id'] = (int)$origin;
+        }
     }
 
     public function getNewsletterContainerAndContentBeforeParsing(
