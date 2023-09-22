@@ -30,6 +30,9 @@
 		"friendsofphp/php-cs-fixer": "^2.16",
 		"nimut/testing-framework": "^5.1"
 	},
+	"replace": {
+		"typo3-ter/luxletter_extended": "self.version"
+	},
 	"autoload": {
 		"psr-4": {
 			"JWeiland\\LuxletterExtended\\": "Classes/"
