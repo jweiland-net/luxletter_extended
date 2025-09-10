@@ -30,3 +30,9 @@ Download and install `luxletter-extended` with the extension manager module.
 ### 2.2 Minimal setup
 
 1) Just install the extension
+
+## 3 Support
+
+Free Support is available via [GitHub Issue Tracker](https://github.com/jweiland-net/luxletter_extended/issues).
+
+For commercial support, please contact us at [support@jweiland.net](support@jweiland.net).
